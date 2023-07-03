@@ -1,10 +1,10 @@
 import matplotlib
-from configs import paths_config
+from PTI.configs import paths_config
 matplotlib.use('Agg')
 import torch
 from torch import nn
-from models.e4e.encoders import psp_encoders
-from models.e4e.stylegan2.model import Generator
+from PTI.models.e4e.encoders import psp_encoders
+from PTI.models.e4e.stylegan2.model import Generator
 
 
 def get_keys(d, name):

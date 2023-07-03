@@ -1,11 +1,12 @@
 import os
-
+import sys
+sys.path.append('.')
 import torch
 from tqdm import tqdm
 
-from configs import paths_config, hyperparameters, global_config
-from training.coaches.base_coach import BaseCoach
-from utils.log_utils import log_images_from_w
+from PTI.configs import paths_config, hyperparameters, global_config
+from PTI.training.coaches.base_coach import BaseCoach
+from PTI.utils.log_utils import log_images_from_w
 
 
 class MultiIDCoach(BaseCoach):

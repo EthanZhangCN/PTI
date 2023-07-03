@@ -1,3 +1,5 @@
+import sys
+sys.path.append('.')
 from configs import paths_config
 import dlib
 import glob
@@ -32,4 +34,4 @@ def pre_process_images(raw_images_path):
 
 
 if __name__ == "__main__":
-    pre_process_images('')
+    pre_process_images('/home/zhizizhang/Documents2/projects/PTI/docs')

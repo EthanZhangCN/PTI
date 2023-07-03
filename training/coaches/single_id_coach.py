@@ -1,9 +1,9 @@
 import os
 import torch
 from tqdm import tqdm
-from configs import paths_config, hyperparameters, global_config
-from training.coaches.base_coach import BaseCoach
-from utils.log_utils import log_images_from_w
+from PTI.configs import paths_config, hyperparameters, global_config
+from PTI.training.coaches.base_coach import BaseCoach
+from PTI.utils.log_utils import log_images_from_w
 
 
 class SingleIDCoach(BaseCoach):
@@ -37,11 +37,10 @@ class SingleIDCoach(BaseCoach):
 
             elif not hyperparameters.use_last_w_pivots or w_pivot is None:
                 w_pivot = self.calc_inversions(image, image_name)
-
+            torch.save(w_pivot, f'{embedding_dir}/0.pt')
             # w_pivot = w_pivot.detach().clone().to(global_config.device)
             w_pivot = w_pivot.to(global_config.device)
-
-            torch.save(w_pivot, f'{embedding_dir}/0.pt')
+ 
             log_images_counter = 0
             real_images_batch = image.to(global_config.device)
 
@@ -68,6 +67,7 @@ class SingleIDCoach(BaseCoach):
                 log_images_counter += 1
 
             self.image_counter += 1
-
+            
             torch.save(self.G,
                        f'{paths_config.checkpoints_dir}/model_{global_config.run_name}_{image_name}.pt')
+        return self.G,w_pivot

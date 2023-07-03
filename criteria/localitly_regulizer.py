@@ -1,9 +1,9 @@
 import torch
 import numpy as np
 import wandb
-from criteria import l2_loss
-from configs import hyperparameters
-from configs import global_config
+from PTI.criteria import l2_loss
+from PTI.configs import hyperparameters
+from PTI.configs import global_config
 
 
 class Space_Regulizer:

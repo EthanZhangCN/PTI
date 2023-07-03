@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
 import wandb
-from configs import global_config
+from PTI.configs import global_config
 import torch
 import matplotlib.pyplot as plt
 

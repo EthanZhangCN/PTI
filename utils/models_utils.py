@@ -1,7 +1,7 @@
 import pickle
 import functools
 import torch
-from configs import paths_config, global_config
+from PTI.configs import paths_config, global_config
 
 
 def toogle_grad(model, flag=True):

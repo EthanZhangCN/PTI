@@ -14,8 +14,8 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from tqdm import tqdm
-from configs import global_config, hyperparameters
-from utils import log_utils
+from PTI.configs import global_config, hyperparameters
+from PTI.utils import log_utils
 import dnnlib
 
 
@@ -38,7 +38,7 @@ def project(
         image_log_step=global_config.image_rec_result_log_snapshot,
         w_name: str
 ):
-    assert target.shape == (G.img_channels, G.img_resolution, G.img_resolution)
+    assert target.shape == (G.img_channels, G.img_resolution, G.img_resolution),print(target.shape,G.img_resolution)
 
     def logprint(*args):
         if verbose:

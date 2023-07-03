@@ -4,16 +4,16 @@ import pickle
 from argparse import Namespace
 import wandb
 import os.path
-from criteria.localitly_regulizer import Space_Regulizer
+from PTI.criteria.localitly_regulizer import Space_Regulizer
 import torch
 from torchvision import transforms
 from lpips import LPIPS
-from training.projectors import w_projector
-from configs import global_config, paths_config, hyperparameters
-from criteria import l2_loss
-from models.e4e.psp import pSp
-from utils.log_utils import log_image_from_w
-from utils.models_utils import toogle_grad, load_old_G
+from PTI.training.projectors import w_projector
+from PTI.configs import global_config, paths_config, hyperparameters
+from PTI.criteria import l2_loss
+from PTI.models.e4e.psp import pSp
+from PTI.utils.log_utils import log_image_from_w
+from PTI.utils.models_utils import toogle_grad, load_old_G
 
 
 class BaseCoach:
@@ -58,7 +58,6 @@ class BaseCoach:
         os.makedirs(embedding_dir, exist_ok=True)
 
         w_pivot = None
-
         if hyperparameters.use_last_w_pivots:
             w_pivot = self.load_inversions(w_path_dir, image_name)
 
@@ -84,7 +83,6 @@ class BaseCoach:
         return w
 
     def calc_inversions(self, image, image_name):
-
         if hyperparameters.first_inv_type == 'w+':
             w = self.get_e4e_inversion(image)
 
